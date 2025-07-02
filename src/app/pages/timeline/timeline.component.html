@@ -1,0 +1,17 @@
+<div class="timeline-container">
+    <h2><mat-icon>timeline</mat-icon> Experience</h2>
+    <mat-list>
+        <mat-list-item *ngFor="let exp of experiences">
+            <div matLine class="job-title">{{ exp.title }}</div>
+            <div matLine class="job-company">{{ exp.company }}</div>
+            <div matLine class="job-duration">{{ exp.duration }}</div>
+            <div matLine class="job-desc">{{ exp.desc }}</div>
+        </mat-list-item>
+    </mat-list>
+    <div class="cv-link">
+        <a mat-raised-button color="primary" href="assets/cv.pdf" target="_blank" rel="noopener">
+            <mat-icon>picture_as_pdf</mat-icon>
+            View CV (PDF)
+        </a>
+    </div>
+    </div>

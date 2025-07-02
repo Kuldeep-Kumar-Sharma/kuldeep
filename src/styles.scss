@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+    background: #fff8e1;
+    color: #222;
+    font-family: 'Roboto', "Helvetica Neue", sans-serif;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: #ff9933;
+}
+
+.dark-theme {
+    background: #222 !important;
+    color: #fff !important; }

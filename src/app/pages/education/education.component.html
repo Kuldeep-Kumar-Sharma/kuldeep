@@ -1,0 +1,15 @@
+<div class="education-container">
+    <h2><mat-icon>school</mat-icon> Education</h2>
+    <div *ngFor="let edu of education" class="edu-item">
+        <mat-icon>{{ edu.icon }}</mat-icon>
+        <span class="degree">{{ edu.degree }}</span>
+        <span class="institution">{{ edu.institution }}</span>
+        <span class="year">{{ edu.year }}</span>
+    </div>
+    <h3><mat-icon>workspace_premium</mat-icon> Certifications</h3>
+    <div *ngFor="let cert of certifications" class="cert-item">
+        <mat-icon>{{ cert.icon }}</mat-icon>
+        <span class="cert-name">{{ cert.name }}</span>
+        <span class="cert-year">{{ cert.year }}</span>
+    </div>
+    </div>
