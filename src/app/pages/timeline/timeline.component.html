@@ -1,13 +1,22 @@
 <div class="timeline-container">
     <h2><mat-icon>timeline</mat-icon> Experience</h2>
-    <mat-list>
-        <mat-list-item *ngFor="let exp of experiences">
-            <div matLine class="job-title">{{ exp.title }}</div>
-            <div matLine class="job-company">{{ exp.company }}</div>
-            <div matLine class="job-duration">{{ exp.duration }}</div>
-            <div matLine class="job-desc">{{ exp.desc }}</div>
-        </mat-list-item>
-    </mat-list>
+    <div class="timeline">
+        <div class="timeline-item" *ngFor="let exp of experiences; let i = index"
+            [ngClass]="{ left: i % 2 === 0, right: i % 2 === 1 }">
+            <div class="timeline-content">
+                <div class="timeline-dot"></div>
+                <div class="timeline-details">
+                    <div class="job-title">{{ exp.title }}</div>
+                    <div class="job-company">{{ exp.company }}</div>
+                    <div class="job-duration">
+                        {{ exp.duration }} <span *ngIf="exp.location">| {{ exp.location }}</span>
+                    </div>
+                    <div class="job-desc">{{ exp.description }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-line"></div>
+    </div>
     <div class="cv-link">
         <a mat-raised-button color="primary" href="assets/cv.pdf" target="_blank" rel="noopener">
             <mat-icon>picture_as_pdf</mat-icon>
