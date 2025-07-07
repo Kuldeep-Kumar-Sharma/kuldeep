@@ -1,15 +1,8 @@
 <div class="skills-container">
-    <h2><mat-icon>psychology</mat-icon> Skills</h2>
-    <div class="skill-graph" *ngFor="let skill of skills">
-        <div class="skill-label">
-            <mat-icon>{{ skill.icon }}</mat-icon>
-            <span>{{ skill.name }}</span>
-            <span>{{ skill.level }}%</span>
-        </div>
-        <mat-progress-bar color="primary" mode="determinate" [value]="skill.level"></mat-progress-bar>
-        <div class="skill-connects" *ngIf="skill.connects.length">
-            <mat-icon>link</mat-icon>
-            <span>Connects to: {{ skill.connects.join(', ') }}</span>
-        </div>
-    </div>
+    <h2>Skills</h2>
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+        [yaxis]="chartOptions.yaxis" [fill]="chartOptions.fill" [stroke]="chartOptions.stroke"
+        [markers]="chartOptions.markers" [dataLabels]="chartOptions.dataLabels" [theme]="chartOptions.theme"
+        [legend]="chartOptions.legend" [tooltip]="chartOptions.tooltip"
+        style="max-width: 500px; margin: 0 auto;"></apx-chart>
     </div>

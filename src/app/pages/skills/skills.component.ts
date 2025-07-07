@@ -1,39 +1,116 @@
 import { Component } from '@angular/core';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatIconModule } from '@angular/material/icon';
-import { NgFor, NgIf } from '@angular/common';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexFill,
+  ApexStroke,
+  ApexMarkers,
+  ApexYAxis,
+  ApexDataLabels,
+  ApexPlotOptions,
+  ApexTheme,
+  ApexLegend,
+  ApexTooltip,
+} from 'ng-apexcharts';
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
+  fill: ApexFill;
+  stroke: ApexStroke;
+  markers: ApexMarkers;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  theme: ApexTheme;
+  legend: ApexLegend;
+  tooltip: ApexTooltip;
+};
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [MatProgressBarModule, MatIconModule, NgFor,NgIf],
+  imports: [NgApexchartsModule],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })
 export class SkillsComponent {
-  skills = [
-    {
-      name: 'Angular',
-      level: 90,
-      icon: 'integration_instructions',
-      connects: ['TypeScript', 'RxJS', 'HTML/CSS'],
+  public chartOptions: ChartOptions = {
+    series: [
+      {
+        name: 'Skill Level',
+        data: [90, 85, 88, 92, 75, 70],
+      },
+    ],
+    chart: {
+      height: 400,
+      type: 'radar',
+      toolbar: { show: false },
     },
-    {
-      name: 'TypeScript',
-      level: 85,
-      icon: 'code',
-      connects: ['JavaScript', 'Angular'],
+    xaxis: {
+      categories: [
+        'Angular',
+        'TypeScript',
+        'JavaScript',
+        'HTML/CSS',
+        'Node.js',
+        'Python',
+      ],
+      labels: {
+        style: {
+          colors: [
+            '#0067b8',
+            '#50a7f7',
+            '#ffb900',
+            '#7cbb00',
+            '#f65314',
+            '#a0a0a0',
+          ],
+          fontSize: '15px',
+          fontWeight: 600,
+        },
+      },
     },
-    {
-      name: 'JavaScript',
-      level: 88,
-      icon: 'javascript',
-      connects: ['TypeScript', 'Node.js'],
+    yaxis: {
+      min: 0,
+      max: 100,
+      tickAmount: 5,
+      labels: {
+        style: {
+          colors: '#888',
+        },
+      },
     },
-    { name: 'HTML/CSS', level: 92, icon: 'web', connects: ['Angular', 'Sass'] },
-    { name: 'Node.js', level: 75, icon: 'storage', connects: ['JavaScript'] },
-    { name: 'Python', level: 70, icon: 'memory', connects: [] },
-    { name: 'RxJS', level: 80, icon: 'sync_alt', connects: ['Angular'] },
-    { name: 'Sass', level: 80, icon: 'brush', connects: ['HTML/CSS'] },
-  ];
+    fill: {
+      opacity: 0.2,
+      colors: ['#0067b8'],
+    },
+    stroke: {
+      show: true,
+      width: 2,
+      colors: ['#0067b8'],
+    },
+    markers: {
+      size: 5,
+      colors: ['#fff'],
+      strokeColors: ['#0067b8'],
+      strokeWidth: 2,
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    plotOptions: {},
+    theme: {
+      mode: 'light',
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      enabled: true,
+    },
+  };
 }

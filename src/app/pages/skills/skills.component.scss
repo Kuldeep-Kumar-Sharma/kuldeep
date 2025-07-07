@@ -1,33 +1,58 @@
 .skills-container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 48px auto;
-    padding: 32px;
+    padding: 40px 32px;
     background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: background 0.3s, color 0.3s;
 }
 
-.skill-graph {
-    margin-bottom: 32px;
+body.dark-theme .skills-container {
+    background: #232323;
+    color: #f3f3f3;
+    border: 1px solid #333;
 }
 
-.skill-label {
+.skills-grid {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 4px;
-    font-weight: 500;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
 }
 
-.skill-label mat-icon {
-    color: #ff9933;
-}
-
-.skill-connects {
-    font-size: 0.95em;
-    color: #138808;
-    margin-top: 2px;
+.skill-donut {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 4px; }
+    width: 140px;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.donut-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.donut-value {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #0067b8;
+}
+
+body.dark-theme .donut-value {
+    color: #50a7f7;
+}
+
+.donut-name {
+    font-size: 1em;
+    color: #222;
+}
+
+body.dark-theme .donut-name {
+    color: #f3f3f3; }

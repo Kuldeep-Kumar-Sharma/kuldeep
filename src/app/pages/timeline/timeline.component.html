@@ -1,21 +1,16 @@
 <div class="timeline-container">
-    <h2><mat-icon>timeline</mat-icon> Experience</h2>
-    <div class="timeline">
-        <div class="timeline-item" *ngFor="let exp of experiences; let i = index"
+    <div class="timeline-vertical">
+        <div class="timeline-line"></div>
+        <div class="timeline-event" *ngFor="let exp of experiences; let i = index"
             [ngClass]="{ left: i % 2 === 0, right: i % 2 === 1 }">
-            <div class="timeline-content">
-                <div class="timeline-dot"></div>
-                <div class="timeline-details">
-                    <div class="job-title">{{ exp.title }}</div>
-                    <div class="job-company">{{ exp.company }}</div>
-                    <div class="job-duration">
-                        {{ exp.duration }} <span *ngIf="exp.location">| {{ exp.location }}</span>
-                    </div>
-                    <div class="job-desc">{{ exp.description }}</div>
-                </div>
+            <div class="timeline-year-label">{{ exp.duration }}</div>
+            <div class="timeline-details">
+                <div class="job-title">{{ exp.title }}</div>
+                <div class="job-company">{{ exp.company }}</div>
+                <div class="job-location" *ngIf="exp.location">{{ exp.location }}</div>
+                <div class="job-desc">{{ exp.description }}</div>
             </div>
         </div>
-        <div class="timeline-line"></div>
     </div>
     <div class="cv-link">
         <a mat-raised-button color="primary" href="assets/cv.pdf" target="_blank" rel="noopener">

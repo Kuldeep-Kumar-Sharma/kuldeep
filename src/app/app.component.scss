@@ -5,26 +5,26 @@ mat-toolbar {
     right: 0;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0 32px;
     z-index: 1000;
+    background: #fff !important;
+    color: #222 !important;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: background 0.3s, color 0.3s;
 }
 
-mat-sidenav-container {
-    min-height: 100vh;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    /* Add top padding equal to toolbar height */
-    padding-top: 64px;
+body.dark-theme mat-toolbar {
+    background: #232323 !important;
+    color: #f3f3f3 !important;
+    border-bottom: 1px solid #333;
 }
 
-body,
-html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
+mat-toolbar .toolbar-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #0067b8;
+    letter-spacing: 1px;
 }
 
 .show-desktop a,
@@ -32,44 +32,53 @@ mat-toolbar a,
 mat-toolbar .mat-button,
 mat-nav-list a.mat-list-item,
 mat-sidenav .mat-list-item {
-    color: #fff !important;
+    color: #222 !important;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: border 0.2s, color 0.2s;
+}
+
+body.dark-theme .show-desktop a,
+body.dark-theme mat-toolbar a,
+body.dark-theme mat-toolbar .mat-button,
+body.dark-theme mat-nav-list a.mat-list-item,
+body.dark-theme mat-sidenav .mat-list-item {
+    color: #f3f3f3 !important;
+}
+
+.show-desktop a:hover,
+mat-toolbar a:hover,
+mat-toolbar .mat-button:hover {
+    color: #0067b8 !important;
+    border-bottom: 2px solid #0067b8;
 }
 
 mat-nav-list {
-    background: #06038D;
+    background: #fff;
     padding: 0;
+}
+
+body.dark-theme mat-nav-list {
+    background: #232323;
 }
 
 mat-sidenav {
     padding: 0;
     margin: 0;
-    background: #06038D;
+    background: #fff;
+    border-right: 1px solid #e5e5e5;
+}
+
+body.dark-theme mat-sidenav {
+    background: #232323;
+    border-right: 1px solid #333;
 }
 
 @media (max-width: 768px) {
-    .show-mobile {
-        display: inline-flex;
-    }
-
-    .show-desktop {
-        display: none;
+    mat-toolbar {
+        padding: 0 12px;
     }
 
     .mobile-nav {
         width: 220px;
-    }
-}
-
-.lang-btn .lang-code {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #fff2;
-    color: #fff;
-    font-weight: bold;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-}
+    } }
