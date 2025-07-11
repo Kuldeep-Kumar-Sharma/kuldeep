@@ -1,17 +1,23 @@
-<div class="home-hero">
-    <div class="hero-photo">
-        <img src="assets/profilePhoto.png" alt="Kuldeep" />
+<div *ngIf="profile" class="intro-section">
+    <div class="profile-photo">
+        <img [src]="profile.photo" [alt]="profile.name" />
     </div>
-    <div class="hero-content">
-        <h1>Hi, I'm <span class="highlight">Kuldeep</span></h1>
-        <h2>Web Developer & Designer</h2>
-        <p>
-            Passionate about building beautiful, accessible, and performant web experiences.<br>
-            <span class="about-india"> ...</span>
-        </p>
-        <div class="hero-links">
+    <div class="intro-content">
+        <h1>Hi, I'm <span class="highlight">{{ profile.name }}</span></h1>
+        <h2>{{ profile.role }} based in {{ profile.location }}</h2>
+        <p class="profile-summary">{{ profile.summary }}</p>
+
+        <div class="contact-info">
+            <a [href]="profile.linkedin" target="_blank">LinkedIn</a> |
+            <a [href]="profile.github" target="_blank">GitHub</a><br>
+            <a [href]="'mailto:' + profile.email">{{ profile.email }}</a><br>
+            {{ profile.phone }}
+        </div>
+
+        <div class="profile-links">
             <a mat-raised-button color="primary" routerLink="/projects">Projects</a>
             <a mat-stroked-button color="accent" routerLink="/contact">Contact</a>
         </div>
     </div>
-    </div>
+</div>
+  

@@ -16,8 +16,14 @@ body.dark-theme {
 }
 
 section {
-    padding: 64px 0 32px 0;
+    width: 98vw;
+    margin: 0;
     background: transparent;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: stretch;
+    background: #fff;
 }
 
 a {
@@ -70,10 +76,8 @@ body.dark-theme .mat-stroked-button {
 .skills-container,
 .education-container,
 .contact-container {
-    max-width: 900px;
-    margin: 48px auto;
-    padding: 40px 32px;
-    background: #fff;
+    width: 100%;
+    max-width: 100%;
     border-radius: 8px;
     border: 1px solid #e5e5e5;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
