@@ -3,45 +3,63 @@
     <mat-nav-list>
       <a mat-list-item href="#home" (click)="sidenavOpened = false">Home</a>
       <a mat-list-item href="#skills" (click)="sidenavOpened = false">Skills</a>
-      <a mat-list-item href="#projects" (click)="sidenavOpened = false">Projects</a>
       <a mat-list-item href="#timeline" (click)="sidenavOpened = false">Experience</a>
       <a mat-list-item href="#education" (click)="sidenavOpened = false">Education</a>
       <a mat-list-item href="#contact" (click)="sidenavOpened = false">Contact</a>
-      <button mat-button (click)="switchLang()">
-        {{ langDisplay[lang] }}
+      <mat-divider></mat-divider>
+      <!-- CV Download for Mobile -->
+      <a mat-list-item href="assets/cv.pdf" target="_blank" rel="noopener" (click)="sidenavOpened = false">
+        <mat-icon matListItemIcon>picture_as_pdf</mat-icon>
+        Download CV
+      </a>
+      <mat-divider></mat-divider>
+      <button mat-list-item (click)="switchLang()">
+        <!-- <mat-icon>language</mat-icon> -->
+        <!-- {{ langDisplay[lang] }} -->
       </button>
-      <button mat-button (click)="toggleTheme()">
+      <button mat-list-item (click)="toggleTheme()">
         <mat-icon>{{ isDark ? 'light_mode' : 'dark_mode' }}</mat-icon>
         {{ isDark ? 'Light' : 'Dark' }} Mode
       </button>
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-toolbar color="primary" style="background: #06038D; color: #fff;">
+  <mat-toolbar color="primary" class="clean-toolbar">
     <button mat-icon-button (click)="sidenavOpened = !sidenavOpened" class="show-mobile">
       <mat-icon>menu</mat-icon>
     </button>
-    <span class="toolbar-title">{{ title }}</span>
-    <nav class="show-desktop">
+
+    <nav class="show-desktop nav-links">
       <a mat-button href="#home">Home</a>
       <a mat-button href="#skills">Skills</a>
-      <!-- <a mat-button href="#projects">Projects</a> -->
       <a mat-button href="#timeline">Experience</a>
       <a mat-button href="#education">Education</a>
       <a mat-button href="#contact">Contact</a>
     </nav>
+
     <span class="spacer"></span>
-    <button mat-icon-button class="lang-btn" (click)="switchLang()">
-      <span class="lang-code">{{ lang.toUpperCase() }}</span>
-    </button>
-    <button mat-icon-button (click)="toggleTheme()">
-      <mat-icon>{{ isDark ? 'light_mode' : 'dark_mode' }}</mat-icon>
-    </button>
+
+    <div class="toolbar-actions">
+      <!-- CV Download for Desktop -->
+      <div class="cv-link show-desktop">
+        <a mat-raised-button color="primary" href="assets/cv.pdf" target="_blank" rel="noopener"
+          class="cv-download-btn">
+          <mat-icon>picture_as_pdf</mat-icon>
+          Download CV
+        </a>
+      </div>
+      <!-- <button mat-icon-button class="lang-btn" (click)="switchLang()" matTooltip="Change Language">
+        <span class="lang-code">{{ lang.toUpperCase() }}</span>
+      </button> -->
+      <button mat-icon-button (click)="toggleTheme()"
+        matTooltip="{{ isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode' }}">
+        <mat-icon>{{ isDark ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+    </div>
   </mat-toolbar>
 
   <section id="home"><app-home></app-home></section>
   <section id="skills"><app-skills></app-skills></section>
-  <!-- <section id="projects"><app-projects></app-projects></section> -->
   <section id="timeline"><app-timeline></app-timeline></section>
   <section id="education"><app-education></app-education></section>
   <section id="contact"><app-contact></app-contact></section>

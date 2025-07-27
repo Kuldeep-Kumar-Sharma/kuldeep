@@ -1,94 +1,120 @@
+// Microsoft Blue Theme
+:root {
+    --ms-blue-primary: #0078d4;
+    --ms-blue-dark: #106ebe;
+    --ms-blue-light: #40e0ff;
+    --ms-gray-50: #f8f9fa;
+    --ms-gray-100: #e1e1e1;
+    --ms-gray-600: #323130;
+    --ms-gray-900: #201f1e;
+    --ms-white: #ffffff;
+}
+
 html,
 body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', 'Inter', 'Roboto', Arial, sans-serif;
-    background: #f3f3f3;
-    color: #222;
+    font-family: 'Segoe UI', 'SF Pro Display', Arial, sans-serif;
+    background: var(--ms-gray-50);
+    color: var(--ms-gray-600);
     scroll-behavior: smooth;
     transition: background 0.3s, color 0.3s;
 }
 
+body {
+    padding-top: 64px; // Account for fixed toolbar
+}
+
 body.dark-theme {
-    background: #1b1b1b;
-    color: #f3f3f3;
+    background: var(--ms-gray-900);
+    color: var(--ms-gray-50);
 }
 
 section {
-    width: 98vw;
+    width: 100vw;
     margin: 0;
-    background: transparent;
+    padding: 0;
+    background: var(--ms-white);
     display: flex;
-    overflow: hidden;
-    flex-direction: column;
-    align-items: stretch;
-    background: #fff;
+    justify-content: center;
+    min-height: auto;
 }
 
 a {
-    color: #0067b8;
+    color: var(--ms-blue-primary);
     text-decoration: none;
     transition: color 0.2s;
 }
 
 a:hover {
-    color: #ffb900;
+    color: var(--ms-blue-dark);
+    text-decoration: underline;
 }
 
-h1,
-h2,
-h3 {
-    font-weight: 700;
-    color: #222;
+h1, h2, h3 {
+    font-weight: 600;
+    color: var(--ms-gray-900);
     margin-bottom: 0.5em;
 }
 
 body.dark-theme h1,
 body.dark-theme h2,
 body.dark-theme h3 {
-    color: #f3f3f3;
+    color: var(--ms-white);
 }
 
+// Microsoft-style buttons
 .mat-raised-button,
 .mat-stroked-button,
 .mat-flat-button {
     border-radius: 4px !important;
     box-shadow: none !important;
     font-weight: 500;
-    background: #0067b8 !important;
-    color: #fff !important;
+    background: var(--ms-blue-primary) !important;
+    color: var(--ms-white) !important;
+    text-transform: none !important;
 }
 
 .mat-raised-button:hover,
 .mat-stroked-button:hover {
-    background: #005a9e !important;
+    background: var(--ms-blue-dark) !important;
 }
 
 body.dark-theme .mat-raised-button,
 body.dark-theme .mat-stroked-button {
-    background: #005a9e !important;
-    color: #fff !important;
+    background: var(--ms-blue-light) !important;
+    color: var(--ms-gray-900) !important;
 }
 
+// Flat sections - no cards
+.home-container,
 .timeline-container,
 .projects-container,
 .skills-container,
 .education-container,
 .contact-container {
     width: 100%;
-    max-width: 100%;
-    border-radius: 8px;
-    border: 1px solid #e5e5e5;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-    transition: background 0.3s, color 0.3s;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 32px;
+    background: var(--ms-white);
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
 }
 
-body.dark-theme .timeline-container,
-body.dark-theme .projects-container,
-body.dark-theme .skills-container,
-body.dark-theme .education-container,
-body.dark-theme .contact-container {
-    background: #232323;
-    color: #f3f3f3;
-    border: 1px solid #333; }
+@media (max-width: 599px) {
+    body {
+        padding-top: 56px; // Mobile toolbar height
+    }
+    
+    .home-container,
+    .timeline-container,
+    .projects-container,
+    .skills-container,
+    .education-container,
+    .contact-container {
+        padding: 40px 20px;
+    }
+}

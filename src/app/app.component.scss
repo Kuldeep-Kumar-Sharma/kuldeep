@@ -1,84 +1,90 @@
-mat-toolbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0 32px;
-    z-index: 1000;
-    background: #fff !important;
-    color: #222 !important;
-    border-bottom: 1px solid #e5e5e5;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-    transition: background 0.3s, color 0.3s;
+.clean-toolbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background: var(--ms-blue-primary) !important;
+    color: var(--ms-white) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-bottom: none;
 }
 
-body.dark-theme mat-toolbar {
-    background: #232323 !important;
-    color: #f3f3f3 !important;
-    border-bottom: 1px solid #333;
+.nav-links {
+    display: flex;
+    gap: 8px;
+    margin-left: 24px;
 }
 
-mat-toolbar .toolbar-title {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #0067b8;
-    letter-spacing: 1px;
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: all 0.2s;
+    text-transform: none !important;
 }
 
-.show-desktop a,
-mat-toolbar a,
-mat-toolbar .mat-button,
-mat-nav-list a.mat-list-item,
-mat-sidenav .mat-list-item {
-    color: #222 !important;
-    font-weight: 500;
-    border-bottom: 2px solid transparent;
-    transition: border 0.2s, color 0.2s;
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--ms-white) !important;
 }
 
-body.dark-theme .show-desktop a,
-body.dark-theme mat-toolbar a,
-body.dark-theme mat-toolbar .mat-button,
-body.dark-theme mat-nav-list a.mat-list-item,
-body.dark-theme mat-sidenav .mat-list-item {
-    color: #f3f3f3 !important;
+.toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.show-desktop a:hover,
-mat-toolbar a:hover,
-mat-toolbar .mat-button:hover {
-    color: #0067b8 !important;
-    border-bottom: 2px solid #0067b8;
+.lang-code {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-mat-nav-list {
-    background: #fff;
-    padding: 0;
+.spacer {
+    flex: 1 1 auto;
 }
 
-body.dark-theme mat-nav-list {
-    background: #232323;
+@media (max-width: 699px) {
+    .show-desktop { display: none; }
+    .show-mobile { display: block; }
 }
 
-mat-sidenav {
-    padding: 0;
-    margin: 0;
-    background: #fff;
-    border-right: 1px solid #e5e5e5;
+@media (min-width: 700px) {
+    .show-desktop { display: flex; }
+    .show-mobile { display: none; }
 }
 
-body.dark-theme mat-sidenav {
-    background: #232323;
-    border-right: 1px solid #333;
+// Add this to your existing app.component.scss
+
+.cv-link {
+    margin-right: 12px;
 }
 
-@media (max-width: 768px) {
-    mat-toolbar {
-        padding: 0 12px;
-    }
+.cv-download-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--ms-white) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    border-radius: 4px !important;
+    height: 36px !important;
+    line-height: 1 !important;
+    min-width: auto !important;
+}
 
-    .mobile-nav {
-        width: 220px;
-    } }
+.cv-download-btn:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.cv-download-btn mat-icon {
+    font-size: 16px;
+    margin-right: 4px;
+}
+
+// Mobile sidenav CV link styling
+.mobile-nav a[href*="cv.pdf"] mat-icon {
+    color: var(--ms-blue-primary);
+}

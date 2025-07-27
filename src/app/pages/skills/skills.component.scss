@@ -1,54 +1,84 @@
 .skills-container {
-  width: 100%;
-  max-width: none;
-  padding: 5%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 60px 32px;
 }
 
-body.dark-theme .skills-container {
-  background: #232323;
-  color: #f3f3f3;
-  border: 1px solid #333;
+.skills-container h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--ms-blue-primary);
 }
 
 .skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // Force 2 columns
+  gap: 2rem;
+  margin-top: 2rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.skill-donut {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 140px;
-  margin-bottom: 24px;
-  position: relative;
-}
-
-.donut-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.skill-category {
   text-align: center;
+  background: rgba(0, 120, 212, 0.02);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid rgba(0, 120, 212, 0.1);
 }
 
-.donut-value {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #0067b8;
+.skill-category h3 {
+  margin-bottom: 1rem;
+  color: var(--ms-gray-900);
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
-body.dark-theme .donut-value {
-  color: #50a7f7;
+// Force chart size
+::ng-deep .skill-category apx-chart {
+  max-width: 100%;
+  max-height: 300px;
 }
 
-.donut-name {
-  font-size: 1em;
-  color: #222;
+::ng-deep .skill-category .apexcharts-canvas {
+  max-width: 100% !important;
+  max-height: 300px !important;
 }
 
-body.dark-theme .donut-name {
-  color: #f3f3f3;
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr; // Single column on mobile
+    gap: 1.5rem;
+  }
+
+  .skill-category h3 {
+    font-size: 1rem;
+  }
+
+  .skills-container {
+    padding: 40px 20px;
+  }
+
+  ::ng-deep .skill-category apx-chart {
+    max-height: 250px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr); // Keep 2 columns on large screens
+    gap: 3rem;
+  }
+}
+
+body.dark-theme .skill-category {
+  background: rgba(64, 224, 255, 0.05);
+  border-color: rgba(64, 224, 255, 0.2);
+}
+
+body.dark-theme .skill-category h3 {
+  color: var(--ms-white);
 }

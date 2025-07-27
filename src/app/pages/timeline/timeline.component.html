@@ -1,4 +1,5 @@
 <div class="timeline-container">
+    <h2>Work Experience</h2>
     <div class="timeline-vertical">
         <div class="timeline-line"></div>
         <div class="timeline-event" *ngFor="let exp of experiences; let i = index"
@@ -11,11 +12,5 @@
                 <div class="job-desc">{{ exp.description }}</div>
             </div>
         </div>
-    </div>
-    <div class="cv-link">
-        <a mat-raised-button color="primary" href="assets/cv.pdf" target="_blank" rel="noopener">
-            <mat-icon>picture_as_pdf</mat-icon>
-            View CV (PDF)
-        </a>
     </div>
     </div>

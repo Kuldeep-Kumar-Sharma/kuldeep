@@ -4,9 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { HomeComponent } from './pages/home/home.component';
 import { SkillsComponent } from './pages/skills/skills.component';
-import { ProjectsComponent } from './pages/projects/projects.component';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 import { EducationComponent } from './pages/education/education.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -22,16 +22,15 @@ import { ContactComponent } from './pages/contact/contact.component';
     MatListModule,
     HomeComponent,
     SkillsComponent,
-    ProjectsComponent,
     TimelineComponent,
     EducationComponent,
     ContactComponent,
+    MatTooltipModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'Kuldeep';
   isDark = false;
   lang = 'en';
   sidenavOpened = false;
@@ -39,9 +38,6 @@ export class AppComponent {
   languages = ['en', 'hi', 'nl', 'fr'];
   langDisplay: Record<string, string> = {
     en: 'English',
-    hi: 'हिन्दी',
-    nl: 'Nederlands',
-    fr: 'Français',
   };
 
   toggleTheme() {

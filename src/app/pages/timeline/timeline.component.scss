@@ -2,7 +2,7 @@
     position: relative;
     margin: 32px 0;
     min-height: 400px;
-    padding-left: 36px; // space for the line and date
+    padding-left: 36px; 
 }
 
 .timeline-line {
@@ -26,10 +26,12 @@
     align-items: flex-start;
 }
 
+
+
 .timeline-year-label {
     position: relative;
     left: 0;
-    margin-left: -36px; // aligns with the line
+    margin-left: -36px; 
     margin-bottom: 12px;
     background: #fff;
     color: #0067b8;
@@ -41,7 +43,7 @@
     z-index: 2;
     letter-spacing: 0.5px;
     box-shadow: 0 1px 4px rgba(0, 103, 184, 0.04);
-    min-width: 25%;
+    min-width: max-width;
     text-align: center;
 }
 
@@ -96,7 +98,7 @@
         transform: translateX(-50%) translateY(0);
         margin-left: 24px;
         margin-bottom: 0;
-        min-width: 15%;
+        min-width: max-content;
     }
 
     .timeline-event.right .timeline-year-label {
@@ -111,7 +113,7 @@
         margin-bottom: 0;
         margin-left: 0;
         margin-right: 0;
-        max-width: 340px;
+        max-width: max-content;
     }
 
     .timeline-event.left .timeline-details {
