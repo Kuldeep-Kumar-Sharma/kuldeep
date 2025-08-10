@@ -1,37 +1,52 @@
+.home-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+}
+
 .intro-section {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 48px;
-    min-height: calc(100vh - 64px);
-    padding: 64px 24px;
-    background: transparent;
-    text-align: center;
+    max-width: 1000px;
 }
 
 .profile-photo img {
-    width: 220px;
-    height: 220px;
+    width: 240px;
+    height: 240px;
     object-fit: cover;
     border-radius: 50%;
     border: 4px solid var(--ms-blue-primary);
-    background: var(--ms-white);
+    background: var(--bg-primary);
     box-shadow: 0 8px 24px rgba(0, 120, 212, 0.2);
+    transition: transform 0.3s;
+}
+
+.profile-photo img:hover {
+    transform: scale(1.05);
 }
 
 .highlight {
     color: var(--ms-blue-primary);
 }
 
+.intro-content {
+    max-width: 600px;
+}
+
 .intro-content h1 {
     font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .intro-content h2 {
-    color: var(--ms-gray-600);
+    color: var(--text-secondary);
     font-weight: 400;
     margin-bottom: 1.5rem;
     font-size: 1.25rem;
@@ -40,29 +55,81 @@
 .profile-summary {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: var(--ms-gray-600);
+    color: var(--text-secondary);
     margin-bottom: 2rem;
-    max-width: 500px;
-    text-align: justify;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2rem;
+}
+
+.skill-tag {
+    background: rgba(0, 120, 212, 0.1);
+    color: var(--ms-blue-primary);
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+    background: rgba(0, 120, 212, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 120, 212, 0.15);
 }
 
 .contact-info {
-    font-size: 1rem;
-    line-height: 1.8;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
-.contact-info a {
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     color: var(--ms-blue-primary);
     text-decoration: none;
     font-weight: 500;
+    transition: color 0.2s;
 }
 
-.contact-info a:hover {
+.contact-link:hover {
     color: var(--ms-blue-dark);
     text-decoration: underline;
 }
 
-body.dark-theme .intro-content h2,
-body.dark-theme .profile-summary {
-    color: var(--ms-gray-50);
+.contact-link mat-icon {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+}
+
+@media (max-width: 768px) {
+    .intro-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+    }
+
+    .profile-photo img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .intro-content h1 {
+        font-size: 2rem;
+    }
+
+    .skills-tags {
+        justify-content: center;
+    }
+
+    .contact-info {
+        justify-content: center;
+    }
 }

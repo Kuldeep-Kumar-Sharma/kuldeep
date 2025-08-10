@@ -1,4 +1,4 @@
-// Microsoft Blue Theme
+// Microsoft Blue Theme - CSS Variables
 :root {
     --ms-blue-primary: #0078d4;
     --ms-blue-dark: #106ebe;
@@ -8,16 +8,37 @@
     --ms-gray-600: #323130;
     --ms-gray-900: #201f1e;
     --ms-white: #ffffff;
+
+    // Semantic variables for light theme
+    --bg-primary: var(--ms-white);
+    --bg-secondary: var(--ms-gray-50);
+    --text-primary: var(--ms-gray-900);
+    --text-secondary: var(--ms-gray-600);
+    --border-color: var(--ms-gray-100);
+    --card-bg: var(--ms-white);
+    --card-border: #e1e1e1;
 }
 
+// Dark theme semantic variables
+body.dark-theme {
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #252526;
+    --text-primary: var(--ms-white);
+    --text-secondary: #cccccc;
+    --border-color: #444444;
+    --card-bg: #2d2d30;
+    --card-border: #444444;
+}
+
+// Base styles
 html,
 body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', 'SF Pro Display', Arial, sans-serif;
-    background: var(--ms-gray-50);
-    color: var(--ms-gray-600);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
     scroll-behavior: smooth;
     transition: background 0.3s, color 0.3s;
 }
@@ -26,21 +47,18 @@ body {
     padding-top: 64px; // Account for fixed toolbar
 }
 
-body.dark-theme {
-    background: var(--ms-gray-900);
-    color: var(--ms-gray-50);
-}
-
+// Section styling
 section {
     width: 100vw;
     margin: 0;
     padding: 0;
-    background: var(--ms-white);
+    background: var(--bg-primary);
     display: flex;
     justify-content: center;
     min-height: auto;
 }
 
+// Typography
 a {
     color: var(--ms-blue-primary);
     text-decoration: none;
@@ -52,16 +70,12 @@ a:hover {
     text-decoration: underline;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: 600;
-    color: var(--ms-gray-900);
+    color: var(--text-primary);
     margin-bottom: 0.5em;
-}
-
-body.dark-theme h1,
-body.dark-theme h2,
-body.dark-theme h3 {
-    color: var(--ms-white);
 }
 
 // Microsoft-style buttons
@@ -87,7 +101,7 @@ body.dark-theme .mat-stroked-button {
     color: var(--ms-gray-900) !important;
 }
 
-// Flat sections - no cards
+// Flat container styles
 .home-container,
 .timeline-container,
 .projects-container,
@@ -98,17 +112,115 @@ body.dark-theme .mat-stroked-button {
     max-width: 900px;
     margin: 0 auto;
     padding: 60px 32px;
-    background: var(--ms-white);
+    background: var(--bg-primary);
     border: none;
     box-shadow: none;
     border-radius: 0;
 }
 
+// Shared Timeline Styles
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    width: 3px;
+    background: var(--ms-blue-primary);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.year-badge {
+    position: absolute;
+    top: 20px;
+    background: var(--ms-blue-primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 2;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+// Connect the two timelines
+section#timeline {
+    margin-top: -80px;
+    /* Pull timeline up to overlap with education */
+    padding-top: 80px;
+    /* Add padding to maintain proper spacing */
+}
+
+// Card styling in both themes
+.timeline-card,
+.edu-card,
+.skill-category {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+// Comprehensive dark mode text fixes
+body.dark-theme .timeline-card,
+body.dark-theme .edu-card,
+body.dark-theme .skill-category {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-theme p,
+body.dark-theme .profile-summary,
+body.dark-theme .intro-content h2,
+body.dark-theme .job-location,
+body.dark-theme .job-desc,
+body.dark-theme .institution,
+body.dark-theme .edu-quote {
+    color: var(--text-secondary);
+}
+
+// Fix for ApexCharts in dark mode
+body.dark-theme .apexcharts-text tspan,
+body.dark-theme .apexcharts-yaxis-label tspan,
+body.dark-theme .apexcharts-xaxis-label tspan,
+body.dark-theme .apexcharts-legend-text {
+    fill: var(--text-secondary) !important;
+}
+
+// Fix for donut chart colors
+body.dark-theme .apexcharts-legend-text {
+    color: var(--text-secondary) !important;
+}
+
+// Fix for toolbar and nav
+body.dark-theme .mat-toolbar.clean-toolbar {
+    background: #2d2d2d !important;
+}
+
+body.dark-theme .mat-sidenav {
+    background-color: var(--bg-secondary);
+}
+
+body.dark-theme .mat-nav-list a,
+body.dark-theme .mat-list-item {
+    color: var(--text-primary) !important;
+}
+
+// CV button in dark mode
+body.dark-theme .cv-download-btn {
+    background: rgba(64, 224, 255, 0.2) !important;
+    border-color: rgba(64, 224, 255, 0.3) !important;
+    color: var(--ms-white) !important;
+}
+
+body.dark-theme .cv-download-btn:hover {
+    background: rgba(64, 224, 255, 0.3) !important;
+}
+
+// Responsive adjustments
 @media (max-width: 599px) {
     body {
         padding-top: 56px; // Mobile toolbar height
     }
-    
+
     .home-container,
     .timeline-container,
     .projects-container,
@@ -116,5 +228,35 @@ body.dark-theme .mat-stroked-button {
     .education-container,
     .contact-container {
         padding: 40px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 30px;
+    }
+
+    // Timeline responsiveness
+    .timeline-event,
+    .timeline-event.left,
+    .timeline-event.right,
+    .edu-event,
+    .edu-event.left,
+    .edu-event.right {
+        width: auto;
+        margin-left: 0;
+        padding-left: 70px;
+        padding-right: 0;
+    }
+
+    .year-badge {
+        left: 0 !important;
+        right: auto !important;
+    }
+
+    .timeline-icon,
+    .edu-icon {
+        left: 5px !important;
+        right: auto !important;
     }
 }

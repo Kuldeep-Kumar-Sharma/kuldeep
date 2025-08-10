@@ -1,17 +1,30 @@
-<div *ngIf="profile" class="intro-section">
-    <div class="profile-photo">
-        <img [src]="profile.photo" [alt]="profile.name" />
-    </div>
-    <div class="intro-content">
-        <h1>Hi, I'm <span class="highlight">{{ profile.name }}</span></h1>
-        <h2>{{ profile.role }} based in {{ profile.location }}</h2>
-        <p class="profile-summary">{{ profile.summary }}</p>
-
-        <div class="contact-info">
-            <a [href]="profile.linkedin" target="_blank">LinkedIn</a> |
-            <a [href]="profile.github" target="_blank">GitHub</a><br>
-            <a [href]="'mailto:' + profile.email">{{ profile.email }}</a><br>
+<main *ngIf="profile" class="home-container" @fadeIn>
+    <section class="intro-section">
+        <div class="profile-photo">
+            <img [src]="profile.photo" [alt]="profile.name" loading="eager" />
         </div>
-    </div>
-</div>
-  
+
+        <article class="intro-content">
+            <h1>{{ translate('greeting') }} <span class="highlight">{{ profile.name }}</span></h1>
+            <h2>{{ profile.role }} {{ translate('basedIn') }} {{ profile.location }}</h2>
+            <p class="profile-summary">{{ translatedSummary }}</p>
+            <div class="skills-tags" aria-label="Skills">
+                <span class="skill-tag" *ngFor="let skill of skills">{{ skill }}</span>
+            </div>
+
+            <nav class="contact-info" aria-label="Contact information">
+                <a [href]="profile.linkedin" target="_blank" rel="noopener" class="contact-link"
+                    aria-label="LinkedIn Profile">
+                    <mat-icon>link</mat-icon> <span>{{ translate('linkedin') }}</span>
+                </a>
+                <a [href]="profile.github" target="_blank" rel="noopener" class="contact-link"
+                    aria-label="GitHub Profile">
+                    <mat-icon>code</mat-icon> <span>{{ translate('github') }}</span>
+                </a>
+                <a [href]="'mailto:' + profile.email" class="contact-link" aria-label="Send Email">
+                    <mat-icon>email</mat-icon> <span>{{ translate('email') }}</span>
+                </a>
+            </nav>
+        </article>
+    </section>
+</main>

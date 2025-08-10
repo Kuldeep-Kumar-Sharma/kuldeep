@@ -1,53 +1,77 @@
-import { Component } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './pages/home/home.component';
-import { SkillsComponent } from './pages/skills/skills.component';
-import { TimelineComponent } from './pages/timeline/timeline.component';
-import { EducationComponent } from './pages/education/education.component';
-import { ContactComponent } from './pages/contact/contact.component';
+import { TranslationService } from './services/translation.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    HomeComponent,
-    SkillsComponent,
-    TimelineComponent,
-    EducationComponent,
-    ContactComponent,
     MatTooltipModule,
+    MatMenuModule,
+    HomeComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isDark = false;
-  lang = 'en';
-  sidenavOpened = false;
+  isBrowser: boolean;
+  currentLang = 'en'; // Default language
 
-  languages = ['en', 'hi', 'nl', 'fr'];
-  langDisplay: Record<string, string> = {
-    en: 'English',
-  };
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private translationService: TranslationService
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
+
+  ngOnInit() {
+    if (this.isBrowser) {
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        this.isDark = true;
+        document.body.classList.add('dark-theme');
+      }
+
+      // Check for saved language preference
+      const savedLang = localStorage.getItem('language');
+      if (savedLang && ['en', 'nl', 'fr', 'hi'].includes(savedLang)) {
+        this.currentLang = savedLang;
+        this.translationService.setLanguage(savedLang);
+      }
+    }
+  }
 
   toggleTheme() {
     this.isDark = !this.isDark;
-    document.body.classList.toggle('dark-theme', this.isDark);
+
+    if (this.isDark) {
+      document.body.classList.add('dark-theme');
+      if (this.isBrowser) {
+        localStorage.setItem('theme', 'dark');
+      }
+    } else {
+      document.body.classList.remove('dark-theme');
+      if (this.isBrowser) {
+        localStorage.setItem('theme', 'light');
+      }
+    }
   }
 
-  switchLang() {
-    const idx = this.languages.indexOf(this.lang);
-    this.lang = this.languages[(idx + 1) % this.languages.length];
-    // Add your i18n logic here
+  switchLanguage(lang: string) {
+    this.currentLang = lang;
+    this.translationService.setLanguage(lang);
+
+    if (this.isBrowser) {
+      localStorage.setItem('language', lang);
+    }
   }
 }

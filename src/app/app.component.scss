@@ -1,90 +1,86 @@
-.clean-toolbar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 1000 !important;
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    position: relative;
+}
+
+// Floating action buttons
+.floating-actions {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 100;
+}
+
+.theme-toggle {
     background: var(--ms-blue-primary) !important;
     color: var(--ms-white) !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-bottom: none;
 }
 
-.nav-links {
-    display: flex;
-    gap: 8px;
-    margin-left: 24px;
-}
-
-.nav-links a {
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-weight: 400;
-    border-radius: 4px;
-    transition: all 0.2s;
-    text-transform: none !important;
-}
-
-.nav-links a:hover {
-    background: rgba(255, 255, 255, 0.1);
+.cv-download {
+    background: var(--ms-blue-dark) !important;
     color: var(--ms-white) !important;
 }
 
-.toolbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+// Dark mode
+body.dark-theme .theme-toggle {
+    background: var(--ms-blue-light) !important;
+    color: var(--ms-gray-900) !important;
+}
+
+body.dark-theme .cv-download {
+    background: rgba(64, 224, 255, 0.8) !important;
+    color: var(--ms-gray-900) !important;
+}
+
+// Responsive adjustments
+@media (max-width: 599px) {
+    .floating-actions {
+        bottom: 16px;
+        right: 16px;
+        gap: 12px;
+    }
+}
+
+// Add this to your existing styles
+
+.language-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.lang-toggle {
+    background: var(--ms-blue-primary) !important;
+    color: var(--ms-white) !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 36px;
 }
 
 .lang-code {
-    font-size: 12px;
-    font-weight: 600;
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.spacer {
-    flex: 1 1 auto;
+body.dark-theme .lang-toggle {
+    background: var(--ms-blue-light) !important;
+    color: var(--ms-gray-900) !important;
 }
 
-@media (max-width: 699px) {
-    .show-desktop { display: none; }
-    .show-mobile { display: block; }
-}
-
-@media (min-width: 700px) {
-    .show-desktop { display: flex; }
-    .show-mobile { display: none; }
-}
-
-// Add this to your existing app.component.scss
-
-.cv-link {
-    margin-right: 12px;
-}
-
-.cv-download-btn {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: var(--ms-white) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    text-transform: none !important;
-    border-radius: 4px !important;
-    height: 36px !important;
-    line-height: 1 !important;
-    min-width: auto !important;
-}
-
-.cv-download-btn:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-}
-
-.cv-download-btn mat-icon {
-    font-size: 16px;
-    margin-right: 4px;
-}
-
-// Mobile sidenav CV link styling
-.mobile-nav a[href*="cv.pdf"] mat-icon {
-    color: var(--ms-blue-primary);
+// Media query for mobile
+@media (max-width: 599px) {
+    .language-selector {
+        top: 12px;
+        right: 12px;
+    }
 }
