@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production && cp dist/kuldeep-profile/browser/index.html dist/kuldeep-profile/browser/404.html",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:kuldeep-profile": "node dist/kuldeep-profile/server/server.mjs"
