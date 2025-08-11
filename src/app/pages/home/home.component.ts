@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -44,16 +45,20 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private http: HttpClient,
-    private translationService: TranslationService
+    private translationService: TranslationService,
+    @Inject(PLATFORM_ID) private platformId: Object
+
   ) {}
 
   ngOnInit(): void {
-    this.http
-      .get<ProfileData>('assets/data/profile-data.json')
-      .subscribe((data) => {
-        this.profile = data;
-        this.updateTranslations();
-      });
+   if (isPlatformBrowser(this.platformId)) {
+     this.http
+       .get<ProfileData>('assets/data/profile-data.json')
+       .subscribe((data) => {
+         this.profile = data;
+         this.updateTranslations();
+       });
+   }
 
     // Listen for language changes
     this.langSubscription = this.translationService.currentLanguage$.subscribe(
